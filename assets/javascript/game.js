@@ -72,6 +72,7 @@ $(document).ready(function(){
 		frame: function(){
 			if (this.tick <= 0) {
 				$("#question_div").text("Game Over!");
+				this.BtnPress = true;;
 			}
 
 			else{
@@ -80,6 +81,7 @@ $(document).ready(function(){
 				$("#clock").text(trivia.clock.time);
 				this.q = Math.floor(Math.random() * this.tick); //placeholder
 				console.log("clock time: "+this.clock.time);
+
 				for (var i = 0; i < 4; i++) {
 					$("#question_div").text(this.questions[this.q].question);
 					$("#answer_"+i).text(this.questions[this.q].choices[i]);
@@ -124,7 +126,7 @@ $(document).ready(function(){
 					console.log(trivia.questions)
 					this.winCount++;
 					$("#win_counter").text(this.winCount);
-					this.BtnPress = true
+					this.BtnPress = true;
 
 					setTimeout(function(){ trivia.frame(); }, 3000);
 				}
@@ -135,7 +137,7 @@ $(document).ready(function(){
 					$("#question_div").text("Wrong!");
 					this.lossCount++;
 					$("#loss_counter").text(this.lossCount);
-					this.BtnPress = true
+					this.BtnPress = true;
 
 					setTimeout(function(){ trivia.frame(); }, 3000);
 				}
