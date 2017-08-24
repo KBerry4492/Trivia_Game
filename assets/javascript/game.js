@@ -56,7 +56,7 @@ $(document).ready(function(){
 			// question 5
 			],
 
-			this.tick = 5;
+			this.tick = trivia.questions.length;
 			this.q = 0;
 			this.clock.clockRunning = false;
 			this.wrongBtnPress = false;
