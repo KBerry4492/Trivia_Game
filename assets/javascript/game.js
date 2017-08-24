@@ -175,6 +175,8 @@ $(document).ready(function(){
 
 		    if (trivia.clock.time === 0) {
 		    	trivia.stop();
+		    	this.lossCount++;
+				$("#loss_counter").text(this.lossCount);
 		    	$("#question_div").text("Wrong!");
 		    	setTimeout(function(){ trivia.frame(); }, 3000);
 		    };
