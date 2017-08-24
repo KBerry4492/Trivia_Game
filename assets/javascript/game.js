@@ -2,6 +2,10 @@ var trivia = {
 	winCount: 0,
 	lossCount: 0,
 	q:0,
+	rightAnswer: "",
+	answerOrder: [],
+	answerNum: 0,
+	wrongBtnPress: false,
 
 	questions: 
 	[	{
@@ -35,28 +39,75 @@ var trivia = {
 		}],
 
 	newGame: function(){
-		q = Math.floor(Math.random() * 4);
-		console.log(q)
+		this.wrongBtnPress = false;
+		q = Math.floor(Math.random() * 4); //placeholder
+		console.log(q);
 		for (var i = 0; i < 4; i++) {
-			$("#question_div").text(trivia.questions[q].question);
-			$("#answer_"+i).text(trivia.questions[q].choices[i]);
+			$("#question_div").text(this.questions[q].question);
+			$("#answer_"+i).text(this.questions[q].choices[i]);
+			this.answerOrder[i] = this.questions[q].choices[i];
 		};
+
+		console.log(this.answerOrder);
+		for (var j = 0; j < this.answerOrder.length; j++) {
+			if (this.answerOrder[j] === this.questions[q].answer) {
+				this.rightAnswer = this.answerOrder[j];
+				this.answerNum = j;
+				console.log("answerNum:");
+				console.log(this.answerNum);
+				console.log("rightAnswer:");
+				console.log(this.rightAnswer);
+			} 
+		}
 	},//end of function
 
 	btnPress: function(val){
-		var btnAnswer = $("answer_"+val);
+		var btnAnswer = val;
+		console.log("button presed:");
 		console.log(btnAnswer);
+
+		// compare button pressed to the right answer
+
+		if (btnAnswer == this.answerNum) {
+			console.log("Correct");
+			$("#question_div").text("Correct!");
+		}
+
+		else {
+			console.log("nope");
+			$("#question_div").text("Wrong!");
+			this.wrongBtnPress = true
+		}
+
+		// if they match then wins ++
+		// display Correct and wait 2000ms
+		//  go to next 
+
+		// if not losses++ or if timeOut is true
+		// display Wrong and wait 2000ms 
+		//  go to next 
+
+		// else
+		// What did you do?
+		//  go to next 
+		
 
 	},
 }
 
-$(".answer_space").on("click ", function(){
-		trivia.btnPress(this.value);
-		console.log(this.value);
+$(document).ready(function(){
+
+	trivia.newGame();
+
+	// if wrongBtnPrss === false{}
+
+	$(".answer_space").on("click", function(){
+		trivia.btnPress($(this).attr("value"));
 	});
 
-$("#reset_button").on("click", function(){
-	trivia.newGame();
-})
+	// else {}
 
-trivia.newGame();
+	$("#reset_button").on("click", function(){
+		trivia.newGame();
+	});
+});
