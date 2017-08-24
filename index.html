@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Trivia? More like Trivial!</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+</head>
+<body>
+<div class="container-fluid">
+
+<div class="row">
+
+	<div class="jumbotron col-md-10 col-md-offset-1">
+		<h1>Trivia!</h1> 
+		<!-- title -->
+		<div class="row" id="question_div">
+			What... is your quest?
+			<img src="">
+		</div>
+		<!-- questions -->
+
+		<div class="row col-md-offset-1" id="answers_div">
+			<div value="0" class="col-md-3 col-xs-3 answer_space" id="answer_0">
+				To find the Holy Grail!
+			</div>
+
+			<div value="1" class="col-md-3 col-xs-3 answer_space" id="answer_1">
+				We seek... a Shrubbery!
+			</div>
+
+			<div value="2" class="col-md-3 col-xs-3 answer_space" id="answer_2">
+				African or European?
+			</div>
+
+			<div value="3" class="col-md-3 col-xs-3 answer_space" id="answer_3">
+				I don't know that!
+			</div>
+			
+		</div>
+		<!-- answers -->
+
+		<div class="row" id="score_div">
+			<p>Right:<span id="win_counter">0</span>
+			<button id="reset_button">Reset</button>
+			Wrong:<span id="loss_counter">0</span></p>
+		</div>
+		<!-- reset button / score bar -->
+
+	</div>
+	
+</div>
+	
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="assets/javascript/game.js"></script>
+</html>
